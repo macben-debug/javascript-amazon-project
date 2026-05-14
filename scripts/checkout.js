@@ -109,4 +109,13 @@ document.querySelectorAll('.js-delete-link')
         `);
         container.remove();
     })
-})
+});
+
+export function updateCartQuantity2 (){
+  let cartQuantity =0;
+    cart.forEach((cartItem)=>{
+      cartQuantity +=cartItem.quantity;
+    });
+  document.querySelector('.js-checkout-value').innerHTML =`Checkout (${cartQuantity}) items`;
+}
+updateCartQuantity2 ()

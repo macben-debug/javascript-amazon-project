@@ -71,9 +71,10 @@ function updateCartQuantity(productId){
 
     const quantityValue = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
 
-
+   // return cartQuantity;
      
 }
+
 document.querySelectorAll('.js-add-to-cart')
   .forEach((button)=>{
     button.addEventListener('click',()=>{
@@ -94,6 +95,7 @@ document.querySelectorAll('.js-add-to-cart')
      const timeoutId= setInterval(() => addedToCart.classList.remove('added-to-cart-visible'), 2000);
      
      addedMessageTimeout[productId] =timeoutId;
+     
      
 
     })
