@@ -6,9 +6,9 @@ import  dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import {deliveryOptions} from '../data/deliveryOptions.js'
 
 hello();
-const today = dayjs();
-const deliveryDate = today.add(7,'days');
-console.log(deliveryDate.format('dddd, MMMM D'));
+//const today = dayjs();
+//const deliveryDate = today.add(7,'days');
+//console.log(deliveryDate.format('dddd, MMMM D'));
 
 let cartSummaryHtml ='';
 
@@ -23,7 +23,7 @@ cart.forEach((cartItem)=>{
     }
   });
 
-  const deliveryOptionId= cartItem.deliveryOptionsId;
+  const deliveryOptionId= cartItem.deliveryOptionId;
 
   let deliveryOption;
   deliveryOptions.forEach((option)=>{
@@ -87,22 +87,22 @@ cart.forEach((cartItem)=>{
 function deliveryOptionsHTML(matchingProduct,cartItem){
   let html ='';
 
-  deliveryOptions.forEach((deliveryOptions)=>{
+  deliveryOptions.forEach((deliveryOption)=>{
 
     const today = dayjs();
     const deliveryDate = today.add(
-      deliveryOptions.deliveryDays,
+      deliveryOption.deliveryDays,
       'days'
     );
     const dateString = deliveryDate.format(
       'dddd, MMMM D'
     );
 
-    const priceString =deliveryOptions.priceCents ===0
+    const priceString =deliveryOption.priceCents ===0
     ?'FREE'
-    : `$${formatCurrency(deliveryOptions.priceCents)} - `;
+    : `$${formatCurrency(deliveryOption.priceCents)} - `;
 
-    const isChecked = deliveryOptions.id === cartItem.deliveryOptionsId;
+    const isChecked = deliveryOption.id === cartItem.deliveryOptionId;
 
     html+=
     `
