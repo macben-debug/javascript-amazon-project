@@ -5,6 +5,7 @@ import {hello} from 'https://unpkg.com/supersimpledev@1.0.1/hello.esm.js';
 import  dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 import {deliveryOptions, getDeliveryOption} from '../../data/deliveryOptions.js'
 import { renderPaymentSummary } from "./paymentSummary.js";
+import { renderCheckoutHeader } from "./checkoutHeaders.js";
 
 export function renderOrderSummary(){
 
@@ -129,8 +130,8 @@ export function renderOrderSummary(){
         `);
         container.remove();
         
-        updateCartQuantity();
-
+       // updateCartQuantity();
+        renderCheckoutHeader();
         renderPaymentSummary();
 
     })
@@ -139,12 +140,12 @@ export function renderOrderSummary(){
 
 
 
-   function updateCartQuantity (){
-    const cartQuantity = calculateCartQuantity();
-    document.querySelector('.js-return-to-home-link').innerHTML= cartQuantity;
-  }
+   //function updateCartQuantity (){
+    //const cartQuantity = calculateCartQuantity();
+   // document.querySelector('.js-return-to-home-link').innerHTML= cartQuantity;
+  //}
 
-  updateCartQuantity ();
+  //updateCartQuantity ();
 
   document.querySelectorAll(`.js-update-link`)
     .forEach((link)=>{
@@ -174,7 +175,8 @@ export function renderOrderSummary(){
       updateQuantity(productId,newQuantity);
       
        document.querySelector('.js-quantity-label').innerHTML= newQuantity;
-      updateCartQuantity ();
+      //updateCartQuantity ();
+      renderCheckoutHeader();
       renderPaymentSummary();
     })
   });   
